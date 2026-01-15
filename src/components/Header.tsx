@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { BrandLogo } from './BrandLogo';
+import { PixelButton } from './PixelButton';
 
 export function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,8 +28,6 @@ export function Header() {
         if (!isMenuOpen) return;
 
         const trigger = triggerRef.current;
-
-        // Focus first item in menu
         const firstFocusable = menuRef.current?.querySelector<HTMLElement>(
             'a, button, [tabindex="0"]'
         );
@@ -60,8 +59,6 @@ export function Header() {
         };
 
         document.addEventListener('keydown', handleKeyDown);
-
-        // Scroll lock
         document.body.classList.add('no-scroll');
 
         return () => {
@@ -88,36 +85,48 @@ export function Header() {
                 animate={{ y: 0 }}
                 transition={{ type: 'spring', stiffness: 100, damping: 20 }}
             >
-                <nav className="max-w-6xl mx-auto px-4 flex items-center justify-between">
-                    {/* Logo */}
-                    <Link href="/" className="group flex items-center gap-2 focus-ring" aria-label="X One Home">
+                <div className="container-custom flex items-center justify-between">
+                    {/* Logo - Enhanced Visibility */}
+                    <Link href="/" className="group flex items-center gap-3 focus-ring select-none" aria-label="X One Home">
                         <BrandLogo size={32} className="text-foreground group-hover:text-primary transition-colors" />
+                        <span className="font-pixel text-lg text-foreground group-hover:text-primary transition-colors hidden sm:block">
+                            X One
+                        </span>
                     </Link>
 
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex items-center gap-8">
-                        {navItems.map((item) => (
-                            <Link
-                                key={item.href}
-                                href={item.href}
-                                className={`font-sans text-base relative hover:text-primary transition-colors focus-ring ${pathname === item.href ? 'text-primary font-medium' : 'text-foreground'
-                                    }`}
-                            >
-                                {item.label}
-                                {pathname === item.href && (
-                                    <motion.span
-                                        layoutId="nav-underline"
-                                        className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary"
-                                    />
-                                )}
-                            </Link>
-                        ))}
+                        <nav className="flex items-center gap-8">
+                            {navItems.map((item) => (
+                                <Link
+                                    key={item.href}
+                                    href={item.href}
+                                    className={`font-sans text-sm font-medium relative hover:text-primary transition-colors focus-ring px-2 py-1 ${pathname === item.href ? 'text-primary' : 'text-foreground'
+                                        }`}
+                                >
+                                    {item.label}
+                                    {pathname === item.href && (
+                                        <motion.span
+                                            layoutId="nav-underline"
+                                            className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary"
+                                        />
+                                    )}
+                                </Link>
+                            ))}
+                        </nav>
+
+                        {/* Mini CTA */}
+                        <Link href="/contact" tabIndex={-1}>
+                            <PixelButton className="text-xs px-4 py-2 min-h-[36px]">
+                                Get Quote
+                            </PixelButton>
+                        </Link>
                     </div>
 
                     {/* Mobile Menu Button */}
                     <motion.button
                         ref={triggerRef}
-                        className="md:hidden border-2 border-foreground bg-primary text-white p-2 min-w-[44px] min-h-[44px] flex items-center justify-center focus-ring"
+                        className="md:hidden border-2 border-foreground bg-surface text-foreground active:bg-primary active:text-white p-2 min-w-[44px] min-h-[44px] flex items-center justify-center focus-ring transition-colors"
                         whileTap={{ scale: 0.95 }}
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
@@ -126,7 +135,7 @@ export function Header() {
                     >
                         <span className="font-pixel text-xs">{isMenuOpen ? 'X' : '☰'}</span>
                     </motion.button>
-                </nav>
+                </div>
             </motion.header>
 
             {/* Mobile Menu Overlay */}
@@ -155,18 +164,28 @@ export function Header() {
                             aria-modal="true"
                             aria-label="Navigation menu"
                         >
-                            <div className="flex flex-col items-center gap-8 py-8">
+                            <div className="flex flex-col items-center gap-6 py-4">
                                 {navItems.map((item) => (
                                     <Link
                                         key={item.href}
                                         href={item.href}
-                                        className={`font-sans text-lg hover:text-primary transition-colors focus-ring ${pathname === item.href ? 'text-primary font-medium' : 'text-foreground'
+                                        className={`font-sans text-xl font-medium w-full text-center py-3 hover:text-primary transition-colors focus-ring ${pathname === item.href ? 'text-primary' : 'text-foreground'
                                             }`}
                                         onClick={() => setIsMenuOpen(false)}
                                     >
                                         {item.label}
                                     </Link>
                                 ))}
+                                <div className="w-full h-px bg-foreground/10 my-2" />
+                                <Link
+                                    href="/contact"
+                                    onClick={() => setIsMenuOpen(false)}
+                                    className="w-full"
+                                >
+                                    <PixelButton className="w-full justify-center">
+                                        Get a Quote
+                                    </PixelButton>
+                                </Link>
                             </div>
                         </motion.div>
                     </>
