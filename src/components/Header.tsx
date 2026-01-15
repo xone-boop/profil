@@ -81,9 +81,6 @@ export function Header() {
                     ? 'py-3 shadow-pixel-sm'
                     : 'py-5 md:py-0 shadow-pixel-sm'
                     }`}
-                initial={{ y: -100 }}
-                animate={{ y: 0 }}
-                transition={{ type: 'spring', stiffness: 100, damping: 20 }}
             >
                 <div className="container-custom flex items-center justify-between h-full min-h-[72px] md:min-h-[72px]">
                     {/* Logo - Enhanced Visibility */}
