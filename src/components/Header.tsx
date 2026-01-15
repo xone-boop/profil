@@ -152,40 +152,59 @@ export function Header() {
                             aria-hidden="true"
                         />
 
-                        {/* Menu Panel */}
+                        {/* Menu Panel - Side Drawer from Right */}
                         <motion.div
                             ref={menuRef}
                             id="mobile-nav"
-                            initial={{ opacity: 0, y: -20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
+                            initial={{ x: '100%' }}
+                            animate={{ x: 0 }}
+                            exit={{ x: '100%' }}
+                            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
                             className="mobile-menu-panel md:hidden"
                             role="dialog"
                             aria-modal="true"
                             aria-label="Navigation menu"
                         >
-                            <div className="flex flex-col items-center gap-6 py-4">
-                                {navItems.map((item) => (
-                                    <Link
-                                        key={item.href}
-                                        href={item.href}
-                                        className={`font-sans text-xl font-medium w-full text-center py-3 hover:text-primary transition-colors focus-ring ${pathname === item.href ? 'text-primary' : 'text-foreground'
-                                            }`}
+                            <div className="flex flex-col h-full">
+                                {/* Close Button Header */}
+                                <div className="flex justify-end mb-8">
+                                    <button
                                         onClick={() => setIsMenuOpen(false)}
+                                        className="p-2 border-2 border-foreground bg-primary text-white"
+                                        aria-label="Close menu"
                                     >
-                                        {item.label}
+                                        <span className="font-pixel text-xs">X</span>
+                                    </button>
+                                </div>
+
+                                <div className="flex flex-col items-center gap-6 flex-1 justify-center">
+                                    {navItems.map((item) => (
+                                        <Link
+                                            key={item.href}
+                                            href={item.href}
+                                            className={`font-sans text-2xl font-bold w-full text-center py-2 hover:text-primary transition-colors ${pathname === item.href ? 'text-primary' : 'text-foreground'
+                                                }`}
+                                            onClick={() => setIsMenuOpen(false)}
+                                        >
+                                            {item.label}
+                                        </Link>
+                                    ))}
+                                    <div className="w-16 h-1 bg-foreground/10 my-4" />
+                                    <Link
+                                        href="/contact"
+                                        onClick={() => setIsMenuOpen(false)}
+                                        className="w-full max-w-[200px]"
+                                    >
+                                        <PixelButton className="w-full justify-center">
+                                            Get a Quote
+                                        </PixelButton>
                                     </Link>
-                                ))}
-                                <div className="w-full h-px bg-foreground/10 my-2" />
-                                <Link
-                                    href="/contact"
-                                    onClick={() => setIsMenuOpen(false)}
-                                    className="w-full"
-                                >
-                                    <PixelButton className="w-full justify-center">
-                                        Get a Quote
-                                    </PixelButton>
-                                </Link>
+                                </div>
+
+                                <div className="mt-auto text-center pb-8 opacity-50">
+                                    <BrandLogo size={24} className="mx-auto mb-2" />
+                                    <p className="text-xs font-pixel">© 2024</p>
+                                </div>
                             </div>
                         </motion.div>
                     </>

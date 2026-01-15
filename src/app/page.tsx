@@ -96,6 +96,7 @@ export default function HomePage() {
                 bg-[url('/hero-illustration.png')] bg-cover bg-center lg:bg-none 
                 p-8 lg:p-0 rounded-lg lg:rounded-none
                 overflow-hidden
+                text-center lg:text-left
               `}
               variants={containerVariants}
               initial="hidden"
@@ -263,6 +264,7 @@ export default function HomePage() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              className="text-center lg:text-left"
             >
               <h2 className="font-pixel text-lg md:text-2xl mb-8 text-foreground">
                 Why Partner with <span className="text-primary">X One?</span>
