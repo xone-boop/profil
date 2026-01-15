@@ -84,7 +84,7 @@ export default function HomePage() {
       {/* ============================================
           Hero Section
           ============================================ */}
-      <section className="relative pt-32 pb-12 md:pt-40">
+      <section className="relative pt-24 pb-12 md:pt-32">
         <div className="container-custom">
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -107,7 +107,7 @@ export default function HomePage() {
 
               <div className="relative z-10">
                 <motion.div variants={itemVariants} className="inline-block mb-4">
-                  <span className="font-retro text-sm md:text-base px-3 py-1 bg-primary/10 text-primary border border-primary/20 rounded-sm">
+                  <span className="font-retro text-sm md:text-base px-3 py-1 bg-primary/10 text-primary border border-primary/20 rounded-sm animate-soft-blink">
                     Available for freelance work
                   </span>
                 </motion.div>
