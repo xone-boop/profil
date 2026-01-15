@@ -89,9 +89,6 @@ export function Header() {
                     {/* Logo - Enhanced Visibility */}
                     <Link href="/" className="group flex items-center gap-3 focus-ring select-none" aria-label="X One Home">
                         <BrandLogo size={32} className="text-foreground group-hover:text-primary transition-colors" />
-                        <span className="font-pixel text-lg text-foreground group-hover:text-primary transition-colors hidden sm:block">
-                            X One
-                        </span>
                     </Link>
 
                     {/* Desktop Navigation */}

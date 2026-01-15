@@ -84,7 +84,7 @@ export default function HomePage() {
       {/* ============================================
           Hero Section
           ============================================ */}
-      <section className="relative min-h-[90vh] flex items-center pt-16 pb-12">
+      <section className="relative pt-32 pb-12 md:pt-40">
         <div className="container-custom">
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
