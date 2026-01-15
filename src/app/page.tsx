@@ -84,7 +84,7 @@ export default function HomePage() {
       {/* ============================================
           Hero Section
           ============================================ */}
-      <section className="relative pt-24 pb-12 md:pt-32">
+      <section className="relative pt-10 pb-12 md:pt-20">
         <div className="container-custom">
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -94,7 +94,7 @@ export default function HomePage() {
               className={`
                 z-20 relative order-1 lg:order-1 
                 bg-[url('/hero-illustration.png')] bg-cover bg-center lg:bg-none 
-                p-8 lg:p-0 rounded-lg lg:rounded-none
+                px-6 pt-2 pb-8 lg:p-0 rounded-lg lg:rounded-none
                 overflow-hidden
                 text-center lg:text-left
               `}
