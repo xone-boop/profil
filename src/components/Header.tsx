@@ -77,15 +77,15 @@ export function Header() {
     return (
         <>
             <motion.header
-                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-                    ? 'py-3 bg-background/95 backdrop-blur-sm border-b-2 border-foreground shadow-pixel-sm'
-                    : 'py-5 bg-transparent'
+                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b-2 border-foreground bg-background/95 backdrop-blur-sm ${scrolled
+                    ? 'py-3 shadow-pixel-sm'
+                    : 'py-5 md:py-0 shadow-pixel-sm'
                     }`}
                 initial={{ y: -100 }}
                 animate={{ y: 0 }}
                 transition={{ type: 'spring', stiffness: 100, damping: 20 }}
             >
-                <div className="container-custom flex items-center justify-between">
+                <div className="container-custom flex items-center justify-between h-full min-h-[72px] md:min-h-[72px]">
                     {/* Logo - Enhanced Visibility */}
                     <Link href="/" className="group flex items-center gap-3 focus-ring select-none" aria-label="X One Home">
                         <BrandLogo size={32} className="text-foreground group-hover:text-primary transition-colors" />
