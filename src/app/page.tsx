@@ -248,10 +248,10 @@ export default function HomePage() {
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10">
                 {[
-                  { title: 'Conversion First', desc: 'Design decisions backed by data and user behavior.' },
-                  { title: 'Modern Stack', desc: 'Next.js 16, Tailwind v4, accessible and SEO ready.' },
-                  { title: 'Direct Access', desc: 'No project managers. You speak directly with the dev.' },
-                  { title: 'Pixel Perfect', desc: 'Designs exactly as intended, responsive on all devices.' }
+                  { title: 'Revenue Focused', desc: 'Every pixel is designed to guide visitors towards the purchase button.' },
+                  { title: 'Blazing Fast', desc: 'Sites that load in <1s. Better google rankings, happier customers.' },
+                  { title: 'Direct Partnership', desc: 'Work directly with the expert. No agencies, no middlemen, no delays.' },
+                  { title: 'Built to Scale', desc: 'A solid foundation that grows with your business, without breaking.' }
                 ].map((item, idx) => (
                   <div key={idx} className="flex flex-col gap-3">
                     <div className="w-8 h-8 bg-foreground text-background flex items-center justify-center font-pixel text-xs shadow-pixel-sm">
