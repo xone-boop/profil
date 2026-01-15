@@ -86,81 +86,90 @@ export default function HomePage() {
           ============================================ */}
       <section className="relative min-h-[90vh] flex items-center pt-16 pb-12">
         <div className="container-custom">
-          {/* Changed order: Text is order-1 (Top on mobile), Image is order-2 (Bottom on mobile) */}
-          {/* On Desktop (lg): Text is order-1 (Left), Image is order-2 (Right) */}
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
             {/* Text Content */}
             <motion.div
-              className="z-20 relative order-1 lg:order-1"
+              className={`
+                z-20 relative order-1 lg:order-1 
+                bg-[url('/hero-illustration.png')] bg-cover bg-center lg:bg-none 
+                p-8 lg:p-0 rounded-lg lg:rounded-none
+                overflow-hidden
+              `}
               variants={containerVariants}
               initial="hidden"
               animate="visible"
             >
-              <motion.div variants={itemVariants} className="inline-block mb-4">
-                <span className="font-retro text-sm md:text-base px-3 py-1 bg-primary/10 text-primary border border-primary/20 rounded-sm">
-                  Available for freelance work
-                </span>
-              </motion.div>
+              {/* Mobile Overlay - Darken background for readability */}
+              <div className="absolute inset-0 bg-background/90 lg:hidden z-0" />
 
-              <motion.h1
-                className="font-pixel text-xl md:text-3xl lg:text-4xl text-foreground mb-6 leading-tight"
-                variants={itemVariants}
-              >
-                Turn Traffic into <span className="text-primary">Revenue</span> with Premium Web Experiences.
-              </motion.h1>
+              <div className="relative z-10">
+                <motion.div variants={itemVariants} className="inline-block mb-4">
+                  <span className="font-retro text-sm md:text-base px-3 py-1 bg-primary/10 text-primary border border-primary/20 rounded-sm">
+                    Available for freelance work
+                  </span>
+                </motion.div>
 
-              <motion.p
-                className="font-sans text-lg md:text-xl text-muted mb-8 max-w-lg leading-relaxed"
-                variants={itemVariants}
-              >
-                Specializing in high-performance landing pages and SaaS frontends.
-                I build clean, production-ready websites that scale and convert.
-              </motion.p>
+                <motion.h1
+                  className="font-pixel text-xl md:text-3xl lg:text-4xl text-foreground mb-6 leading-tight"
+                  variants={itemVariants}
+                >
+                  Turn Traffic into <span className="text-primary">Revenue</span> with Premium Web Experiences.
+                </motion.h1>
 
-              <motion.div
-                className="flex flex-col sm:flex-row gap-4 mb-12"
-                variants={itemVariants}
-              >
-                <Link href="/templates">
-                  <PixelButton size="lg" className="w-full sm:w-auto justify-center">
-                    View My Work
-                  </PixelButton>
-                </Link>
-                <Link href="/contact">
-                  <PixelButton variant="secondary" size="lg" className="w-full sm:w-auto justify-center">
-                    Discuss Project
-                  </PixelButton>
-                </Link>
-              </motion.div>
+                <motion.p
+                  className="font-sans text-lg md:text-xl text-muted mb-8 max-w-lg leading-relaxed"
+                  variants={itemVariants}
+                >
+                  Specializing in high-performance landing pages and SaaS frontends.
+                  I build clean, production-ready websites that scale and convert.
+                </motion.p>
 
-              {/* Proof Strip */}
-              <motion.div
-                className="grid grid-cols-2 md:grid-cols-4 gap-4 border-2 border-foreground bg-surface p-6 shadow-pixel-sm"
-                variants={itemVariants}
-              >
-                <div className="text-center">
-                  <p className="font-pixel text-[10px] text-primary mb-1">Response</p>
-                  <p className="font-sans text-xs font-bold text-foreground">≤ 24 Hours</p>
-                </div>
-                <div className="text-center border-l-2 border-foreground/10">
-                  <p className="font-pixel text-[10px] text-primary mb-1">Quality</p>
-                  <p className="font-sans text-xs font-bold text-foreground">Top-Tier Code</p>
-                </div>
-                <div className="text-center md:border-l-2 border-foreground/10">
-                  <p className="font-pixel text-[10px] text-primary mb-1">Support</p>
-                  <p className="font-sans text-xs font-bold text-foreground">Post-Launch</p>
-                </div>
-                <div className="text-center border-l-2 border-foreground/10">
-                  <p className="font-pixel text-[10px] text-primary mb-1">Delivery</p>
-                  <p className="font-sans text-xs font-bold text-foreground">On Time</p>
-                </div>
-              </motion.div>
+                <motion.div
+                  className="flex flex-col sm:flex-row gap-4 mb-12"
+                  variants={itemVariants}
+                >
+                  <Link href="/templates">
+                    <PixelButton size="lg" className="w-full sm:w-auto justify-center">
+                      View My Work
+                    </PixelButton>
+                  </Link>
+                  <Link href="/contact">
+                    <PixelButton variant="secondary" size="lg" className="w-full sm:w-auto justify-center">
+                      Discuss Project
+                    </PixelButton>
+                  </Link>
+                </motion.div>
+
+                {/* Proof Strip */}
+                <motion.div
+                  className="grid grid-cols-2 md:grid-cols-4 gap-4 border-2 border-foreground bg-surface p-6 shadow-pixel-sm"
+                  variants={itemVariants}
+                >
+                  <div className="text-center">
+                    <p className="font-pixel text-[10px] text-primary mb-1">Response</p>
+                    <p className="font-sans text-xs font-bold text-foreground">≤ 24 Hours</p>
+                  </div>
+                  <div className="text-center border-l-2 border-foreground/10">
+                    <p className="font-pixel text-[10px] text-primary mb-1">Quality</p>
+                    <p className="font-sans text-xs font-bold text-foreground">Top-Tier Code</p>
+                  </div>
+                  <div className="text-center md:border-l-2 border-foreground/10">
+                    <p className="font-pixel text-[10px] text-primary mb-1">Support</p>
+                    <p className="font-sans text-xs font-bold text-foreground">Post-Launch</p>
+                  </div>
+                  <div className="text-center border-l-2 border-foreground/10">
+                    <p className="font-pixel text-[10px] text-primary mb-1">Delivery</p>
+                    <p className="font-sans text-xs font-bold text-foreground">On Time</p>
+                  </div>
+                </motion.div>
+              </div>
             </motion.div>
 
-            {/* Hero Image */}
+            {/* Hero Image (Desktop Only) */}
             <motion.div
-              className="relative order-2 lg:order-2"
+              className="relative order-2 lg:order-2 hidden lg:block"
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}

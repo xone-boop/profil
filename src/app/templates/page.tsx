@@ -207,10 +207,44 @@ export default function TemplatesPage() {
                     </div>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                         {[
-                            { icon: '💻', title: 'Source Code', desc: 'Clean, modular Next.js code.' },
-                            { icon: '📱', title: 'Responsive', desc: 'Mobile-first layout.' },
-                            { icon: '🎨', title: 'Figma File', desc: 'Design source included.' }, // Assuming this or similar
-                            { icon: '🔧', title: 'Support', desc: '30 days technical help.' },
+                            {
+                                icon: (
+                                    <svg className="w-8 h-8 mx-auto mb-2 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                        <path d="M16 18L22 12L16 6" strokeLinecap="round" strokeLinejoin="round" />
+                                        <path d="M8 6L2 12L8 18" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                ),
+                                title: 'Source Code',
+                                desc: 'Clean, modular Next.js code.'
+                            },
+                            {
+                                icon: (
+                                    <svg className="w-8 h-8 mx-auto mb-2 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                        <path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                ),
+                                title: 'Responsive',
+                                desc: 'Mobile-first layout.'
+                            },
+                            {
+                                icon: (
+                                    <svg className="w-8 h-8 mx-auto mb-2 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                ),
+                                title: 'SEO Ready',
+                                desc: 'Optimized for search engines.'
+                            },
+                            {
+                                icon: (
+                                    <svg className="w-8 h-8 mx-auto mb-2 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                        <path d="M18.36 6.64a9 9 0 1 1-12.73 0" strokeLinecap="round" strokeLinejoin="round" />
+                                        <path d="M12 2v10" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                ),
+                                title: 'Support',
+                                desc: '30 days technical help.'
+                            },
                         ].map((item, i) => (
                             <div key={i} className="text-center p-4 bg-background border border-foreground/20 rounded-sm">
                                 <div className="text-2xl mb-2">{item.icon}</div>
