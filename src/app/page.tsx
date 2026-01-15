@@ -5,6 +5,26 @@ import Image from 'next/image';
 import { PixelButton, PixelCard, BrandLogo } from '@/components';
 import { motion } from 'framer-motion';
 
+// Custom SVGs for Service Icons
+const IconDesign = () => (
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-primary">
+    <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM4 12C4 7.58 7.58 4 12 4C13.84 4 15.54 4.61 16.92 5.64L5.64 16.92C4.61 15.54 4 13.84 4 12ZM12 20C10.16 20 8.46 19.39 7.08 18.36L18.36 7.08C19.39 8.46 20 10.16 20 12C20 16.42 16.42 20 12 20Z" fill="currentColor" fillOpacity="0.2" />
+    <path d="M12 6C8.69 6 6 8.69 6 12C6 15.31 8.69 18 12 18C15.31 18 18 15.31 18 12C18 8.69 15.31 6 12 6ZM12 16C9.79 16 8 14.21 8 12C8 9.79 9.79 8 12 8C14.21 8 16 9.79 16 12C16 14.21 14.21 16 12 16Z" fill="currentColor" />
+  </svg>
+);
+
+const IconDev = () => (
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-primary">
+    <path d="M9.4 16.6L4.8 12L9.4 7.4L8 6L2 12L8 18L9.4 16.6ZM14.6 16.6L19.2 12L14.6 7.4L16 6L22 12L16 18L14.6 16.6Z" fill="currentColor" />
+  </svg>
+);
+
+const IconShop = () => (
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-primary">
+    <path d="M7 18C5.9 18 5.01 18.9 5.01 20C5.01 21.1 5.9 22 7 22C8.1 22 9 21.1 9 20C9 18.9 8.1 18 7 18ZM17 18C15.9 18 15.01 18.9 15.01 20C15.01 21.1 15.9 22 17 22C18.1 22 19 21.1 19 20C19 18.9 18.1 18 17 18ZM7.17 14.75L7.2 14.63L8.1 13H15.55C16.3 13 16.96 12.59 17.3 11.97L21.16 4.96L19.42 4L15.55 11H8.53L8.4 10.73L6.16 6L5.21 4L4.27 2H1V4H3L6.6 11.59L5.25 14.03C5.09 14.32 5 14.65 5 15C5 16.1 5.9 17 7 17H19V15H7.42C7.28 15 7.17 14.89 7.17 14.75Z" fill="currentColor" />
+  </svg>
+);
+
 export default function HomePage() {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -28,19 +48,19 @@ export default function HomePage() {
 
   const services = [
     {
-      icon: '/icon-design.png', // Placeholder icon path
+      icon: <IconDesign />,
       title: 'Landing Pages that Sell',
       desc: 'High-conversion layouts designed to turn visitors into paying customers. Stop losing leads to bad UX.',
       outputs: ['Conversion-focused', 'Mobile-first design', 'Fast loading (<1s)']
     },
     {
-      icon: '/icon-dev.png',
+      icon: <IconDev />,
       title: 'SaaS Frontends',
       desc: 'Scalable, maintainable, and interactive dashboards. Built for complex data and smooth user interactions.',
       outputs: ['Responsive layouts', 'Interactive charts', 'Clean component architecture']
     },
     {
-      icon: '/icon-solutions.png',
+      icon: <IconShop />,
       title: 'Headless E-commerce',
       desc: 'Custom shopping experiences that are blazing fast and SEO optimized, unlike standard templates.',
       outputs: ['Shopify/Woo integration', 'Optimized cart flow', 'SEO Best Practices']
@@ -54,10 +74,13 @@ export default function HomePage() {
           ============================================ */}
       <section className="relative min-h-[90vh] flex items-center pt-24 pb-12">
         <div className="container-custom">
+          {/* Changed order: Text is order-1 (Top on mobile), Image is order-2 (Bottom on mobile) */}
+          {/* On Desktop (lg): Text is order-1 (Left), Image is order-2 (Right) */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
             {/* Text Content */}
             <motion.div
-              className="z-20 relative order-2 lg:order-1"
+              className="z-20 relative order-1 lg:order-1"
               variants={containerVariants}
               initial="hidden"
               animate="visible"
@@ -125,7 +148,7 @@ export default function HomePage() {
 
             {/* Hero Image */}
             <motion.div
-              className="relative order-1 lg:order-2"
+              className="relative order-2 lg:order-2"
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
@@ -176,9 +199,9 @@ export default function HomePage() {
                 className="h-full"
               >
                 <PixelCard className="h-full flex flex-col p-8 md:p-10 border-pixel-thick hover:-translate-y-2 transition-transform duration-300">
-                  <div className="w-16 h-16 mb-6 relative bg-primary/10 p-3 border-2 border-primary rounded-sm">
-                    {/* Placeholder visual if image missing */}
-                    <div className="w-full h-full bg-primary/20 pixelated-grid" />
+                  {/* Icon Container - Larger and cleaner */}
+                  <div className="w-20 h-20 mb-8 relative bg-primary/5 p-4 border-2 border-primary rounded-sm flex items-center justify-center">
+                    {service.icon}
                   </div>
 
                   <h3 className="font-pixel text-sm md:text-base mb-4 text-foreground">
@@ -243,7 +266,7 @@ export default function HomePage() {
               </div>
             </motion.div>
 
-            {/* Right Col: Workflow Visualization */}
+            {/* Right Col: Workflow Layout */}
             <motion.div
               className="relative p-8 bg-background border-2 border-foreground shadow-pixel"
               initial={{ opacity: 0, x: 30 }}
@@ -281,7 +304,7 @@ export default function HomePage() {
       </section>
 
       {/* ============================================
-          Mini Case Proof Section
+          Service Guarantees (Replacing Real Results)
           ============================================ */}
       <section className="py-24">
         <div className="container-custom">
@@ -291,45 +314,45 @@ export default function HomePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="font-pixel text-lg md:text-2xl mb-4">Real <span className="text-primary">Results</span></h2>
-            <p className="font-sans text-muted">Recent improvements for clients.</p>
+            <h2 className="font-pixel text-lg md:text-2xl mb-4">My Service <span className="text-primary">Guarantees</span></h2>
+            <p className="font-sans text-muted">What you can expect from every project.</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Case 1 */}
-            <PixelCard className="p-8 border-l-8 border-l-primary">
-              <h3 className="font-pixel text-sm mb-4">SaaS Dashboard Optimization</h3>
+            {/* Guarantee 1 */}
+            <PixelCard className="p-8 border-l-8 border-l-primary hover:-translate-y-1 transition-transform">
+              <h3 className="font-pixel text-sm mb-4">Maximum Performance</h3>
               <div className="space-y-4 font-sans text-sm">
                 <div className="flex gap-4">
-                  <span className="text-muted w-16 flex-shrink-0">Problem</span>
-                  <span className="text-foreground">Slow load times causing high bounce rate on analytics page.</span>
+                  <span className="text-muted w-20 flex-shrink-0">The Goal</span>
+                  <span className="text-foreground">Instant load times to keep users engaged.</span>
                 </div>
                 <div className="flex gap-4">
-                  <span className="text-muted w-16 flex-shrink-0">Solution</span>
-                  <span className="text-foreground">Code splitting + Dynamic imports + API caching layer.</span>
+                  <span className="text-muted w-20 flex-shrink-0">My Standard</span>
+                  <span className="text-foreground">All sites are optimized for 95+ PageSpeed scores.</span>
                 </div>
                 <div className="flex gap-4 bg-primary/10 p-3 -mx-2 -my-1 rounded-sm border border-primary/20">
-                  <span className="text-primary font-bold w-16 flex-shrink-0">Result</span>
-                  <span className="text-foreground font-medium">Load time reduced by 65% (4.2s &rarr; 1.4s)</span>
+                  <span className="text-primary font-bold w-20 flex-shrink-0">Promise</span>
+                  <span className="text-foreground font-medium">Under 1.5s Load Time</span>
                 </div>
               </div>
             </PixelCard>
 
-            {/* Case 2 */}
-            <PixelCard className="p-8 border-l-8 border-l-blue-500">
-              <h3 className="font-pixel text-sm mb-4 text-blue-600">E-commerce Funnel UI</h3>
+            {/* Guarantee 2 */}
+            <PixelCard className="p-8 border-l-8 border-l-blue-500 hover:-translate-y-1 transition-transform">
+              <h3 className="font-pixel text-sm mb-4 text-blue-600">Technical Excellence</h3>
               <div className="space-y-4 font-sans text-sm">
                 <div className="flex gap-4">
-                  <span className="text-muted w-16 flex-shrink-0">Problem</span>
-                  <span className="text-foreground">Complex checkout process leading to cart abandonment.</span>
+                  <span className="text-muted w-20 flex-shrink-0">The Goal</span>
+                  <span className="text-foreground">A bug-free experience on every device.</span>
                 </div>
                 <div className="flex gap-4">
-                  <span className="text-muted w-16 flex-shrink-0">Solution</span>
-                  <span className="text-foreground">Simplified 3-step checkout with real-time feedback.</span>
+                  <span className="text-muted w-20 flex-shrink-0">My Standard</span>
+                  <span className="text-foreground">Rigorous testing on mobile, tablet, and desktop.</span>
                 </div>
                 <div className="flex gap-4 bg-blue-50 p-3 -mx-2 -my-1 rounded-sm border border-blue-100">
-                  <span className="text-blue-600 font-bold w-16 flex-shrink-0">Result</span>
-                  <span className="text-foreground font-medium">Checkout conversion rate +18%</span>
+                  <span className="text-blue-600 font-bold w-20 flex-shrink-0">Promise</span>
+                  <span className="text-foreground font-medium">30 Days Bug-Free Warranty</span>
                 </div>
               </div>
             </PixelCard>
