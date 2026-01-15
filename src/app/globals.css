@@ -1,26 +1,461 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Inter:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
+/* ============================================
+   X One Design System
+   Warm Pixel Art Aesthetic
+   ============================================ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Base Colors - Runtime Variables */
+  --vibe-cream: #FFF2D7;
+  --vibe-cream-dark: #FFEBCC;
+  --vibe-cream-darker: #FFE4B8;
+
+  --vibe-brown: #473335;
+  --vibe-brown-light: #6B5658;
+  --vibe-brown-lighter: #8B7577;
+
+  --vibe-orange: #FF8C42;
+  --vibe-orange-hover: #FF7A2B;
+  --vibe-orange-light: #FFB380;
+
+  --vibe-green: #27AE60;
+  --vibe-blue: #3498DB;
+  --vibe-red: #E74C3C;
+  --vibe-yellow: #F39C12;
+
+  --vibe-muted: #D4C5B9;
+  --vibe-shadow: rgba(71, 51, 53, 0.35);
+
+  --header-h: 72px;
 }
 
+/* Tailwind v4 Theme - Generates utility classes */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Colors */
+  --color-background: var(--vibe-cream);
+  --color-surface: var(--vibe-cream-dark);
+  --color-surface-2: var(--vibe-cream-darker);
+
+  --color-foreground: var(--vibe-brown);
+  --color-muted: var(--vibe-brown-light);
+
+  --color-primary: var(--vibe-orange);
+  --color-primary-hover: var(--vibe-orange-hover);
+  --color-primary-light: var(--vibe-orange-light);
+
+  --color-success: var(--vibe-green);
+  --color-info: var(--vibe-blue);
+  --color-danger: var(--vibe-red);
+  --color-warning: var(--vibe-yellow);
+
+  /* Fonts */
+  --font-pixel: 'Press Start 2P', cursive;
+  --font-retro: 'VT323', monospace;
+  --font-sans: 'Inter', sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ============================================
+   Base Styles
+   ============================================ */
+
+body {
+  background-color: var(--vibe-cream);
+  background-image:
+    radial-gradient(rgba(71, 51, 53, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: var(--vibe-brown);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+/* Custom cursor for interactive elements */
+a,
+button,
+[role="button"] {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewport="0 0 16 16" fill="%23FF8C42"><rect x="0" y="0" width="6" height="6"/><rect x="6" y="6" width="6" height="6"/></svg>'), pointer;
+}
+
+/* Custom Text Selection */
+::selection {
+  background: var(--vibe-orange);
+  color: var(--vibe-cream);
+}
+
+/* ============================================
+   Pixel Border & Shadow Utilities
+   ============================================ */
+
+.border-pixel {
+  border: 2px solid var(--vibe-brown);
+}
+
+.border-pixel-thick {
+  border: 3px solid var(--vibe-brown);
+}
+
+.shadow-pixel-sm {
+  box-shadow: 2px 2px 0 var(--vibe-shadow);
+}
+
+.shadow-pixel {
+  box-shadow: 4px 4px 0 var(--vibe-shadow);
+}
+
+.shadow-pixel-lg {
+  box-shadow: 6px 6px 0 var(--vibe-shadow);
+}
+
+/* ============================================
+   Button Styles
+   ============================================ */
+
+.pixel-btn {
+  font-family: var(--font-pixel);
+  font-size: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--vibe-brown);
+  background: var(--vibe-orange);
+  color: white;
+  box-shadow: 4px 4px 0 var(--vibe-shadow);
+  transition: transform 0.1s, box-shadow 0.1s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.pixel-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--vibe-shadow);
+  background: var(--vibe-orange-hover);
+}
+
+.pixel-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--vibe-shadow);
+}
+
+.pixel-btn:focus-visible {
+  outline: 2px solid var(--vibe-orange);
+  outline-offset: 2px;
+}
+
+.pixel-btn:disabled {
+  background: var(--vibe-muted);
+  border-color: var(--vibe-muted);
+  color: var(--vibe-brown-light);
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Secondary Button */
+.pixel-btn-secondary {
+  background: transparent;
+  color: var(--vibe-orange);
+  border-color: var(--vibe-orange);
+}
+
+.pixel-btn-secondary:hover {
+  background: rgba(255, 140, 66, 0.1);
+  color: var(--vibe-orange-hover);
+  border-color: var(--vibe-orange-hover);
+}
+
+/* Ghost Button */
+.pixel-btn-ghost {
+  background: transparent;
+  color: var(--vibe-brown);
+  border: none;
+  box-shadow: none;
+}
+
+.pixel-btn-ghost:hover {
+  background: var(--vibe-cream-dark);
+  box-shadow: none;
+  transform: none;
+}
+
+/* ============================================
+   Card Styles
+   ============================================ */
+
+.pixel-card {
+  background: var(--vibe-cream);
+  border: 3px solid var(--vibe-brown);
+  box-shadow: 4px 4px 0 var(--vibe-shadow);
+  padding: 1.5rem;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.pixel-card-interactive {
+  cursor: pointer;
+}
+
+.pixel-card-interactive:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--vibe-shadow);
+}
+
+.pixel-card-interactive:focus-visible {
+  outline: 2px solid var(--vibe-orange);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   Form Input Styles
+   ============================================ */
+
+.pixel-input {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--vibe-cream);
+  border: 2px solid var(--vibe-brown);
+  color: var(--vibe-brown);
+  width: 100%;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.pixel-input::placeholder {
+  color: var(--vibe-brown-light);
+}
+
+.pixel-input:focus {
+  outline: none;
+  border-color: var(--vibe-orange);
+  box-shadow: 2px 2px 0 var(--vibe-shadow);
+}
+
+.pixel-input:focus-visible {
+  outline: 2px solid var(--vibe-orange);
+  outline-offset: 2px;
+}
+
+.pixel-input.error {
+  border-color: var(--vibe-red);
+}
+
+.error-message {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--vibe-red);
+  margin-top: 0.25rem;
+}
+
+/* ============================================
+   Filter Chip Styles
+   ============================================ */
+
+.filter-chip {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--vibe-brown);
+  background: transparent;
+  color: var(--vibe-brown);
+  transition: all 0.15s;
+}
+
+.filter-chip:hover {
+  background: var(--vibe-cream-dark);
+}
+
+.filter-chip.active {
+  background: var(--vibe-orange);
+  color: white;
+  border-color: var(--vibe-orange);
+}
+
+.filter-chip:focus-visible {
+  outline: 2px solid var(--vibe-orange);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+
+@keyframes float-slow {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.animate-float-slow {
+  animation: float-slow 4s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 5px var(--vibe-orange);
+  }
+
+  50% {
+    box-shadow: 0 0 20px var(--vibe-orange), 0 0 30px var(--vibe-orange-light);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes blink-cursor {
+
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink-cursor 1s step-end infinite;
+}
+
+/* ============================================
+   CRT/Scanline Effects (Optional - OFF by default)
+   Add .crt-enabled to body to enable
+   ============================================ */
+
+body.crt-enabled .scanlines {
+  background: linear-gradient(to bottom,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0) 50%,
+      rgba(0, 0, 0, 0.03) 50%,
+      rgba(0, 0, 0, 0.03));
+  background-size: 100% 4px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 9998;
+}
+
+body.crt-enabled .crt-flicker {
+  animation: flicker 0.15s infinite;
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.01);
+  z-index: 9999;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0.97;
+  }
+
+  5%,
+  10% {
+    opacity: 0.985;
+  }
+
+  15% {
+    opacity: 0.99;
+  }
+
+  35% {
+    opacity: 0.98;
+  }
+
+  100% {
+    opacity: 0.98;
+  }
+}
+
+/* Hidden by default */
+.scanlines,
+.crt-flicker {
+  display: none;
+}
+
+body.crt-enabled .scanlines,
+body.crt-enabled .crt-flicker {
+  display: block;
+}
+
+/* ============================================
+   Scrollbar
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--vibe-muted);
+  border-left: 2px solid var(--vibe-brown);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--vibe-orange);
+  border: 2px solid var(--vibe-brown);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--vibe-orange-hover);
+}
+
+/* ============================================
+   Focus Visible Utilities
+   ============================================ */
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--vibe-orange);
+  outline-offset: 2px;
+}
+
+/* Link focus */
+a:focus-visible {
+  outline: 2px solid var(--vibe-orange);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   Mobile Menu Styles
+   ============================================ */
+
+.mobile-menu-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(71, 51, 53, 0.6);
+  z-index: 40;
+}
+
+.mobile-menu-panel {
+  position: fixed;
+  top: var(--header-h);
+  left: 0;
+  right: 0;
+  background: var(--vibe-cream);
+  border-bottom: 3px solid var(--vibe-brown);
+  border-top: 3px solid var(--vibe-brown);
+  padding: 1.5rem;
+  z-index: 50;
+  max-height: 70vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 0 var(--vibe-shadow);
 }
