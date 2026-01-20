@@ -7,7 +7,7 @@ export function Footer() {
     return (
         <footer className="bg-foreground text-background mt-auto py-4 border-t-4 border-primary/20">
             <div className="container-custom">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-4">
                     {/* Brand */}
                     <div className="md:col-span-2">
                         <div className="flex items-center gap-3 mb-4">
