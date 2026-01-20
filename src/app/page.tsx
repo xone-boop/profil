@@ -386,7 +386,7 @@ export default function HomePage() {
       {/* ============================================
           Testimonials Section (Visual)
           ============================================ */}
-      <section className="py-24 bg-foreground relative overflow-hidden">
+      <section className="py-12 bg-foreground relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10"
           style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '30px 30px' }}
@@ -411,7 +411,7 @@ export default function HomePage() {
       {/* ============================================
           Final CTA Section
           ============================================ */}
-      <section className="py-24 px-4 bg-gradient-to-br from-primary to-primary-light text-white border-t-4 border-foreground relative overflow-hidden">
+      <section className="py-12 px-4 bg-gradient-to-br from-primary to-primary-light text-white border-t-4 border-foreground relative overflow-hidden">
         <div className="container-custom relative z-10 text-center">
           <motion.div
             initial={{ scale: 0.95, opacity: 0 }}

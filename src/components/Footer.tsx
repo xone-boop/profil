@@ -5,7 +5,7 @@ export function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="bg-foreground text-background mt-auto py-12 border-t-4 border-primary/20">
+        <footer className="bg-foreground text-background mt-auto py-6 border-t-4 border-primary/20">
             <div className="container-custom">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
                     {/* Brand */}
@@ -73,7 +73,7 @@ export function Footer() {
                 </div>
 
                 {/* Divider */}
-                <div className="h-px bg-background/10 my-10" />
+                <div className="h-px bg-background/10 my-4" />
 
                 {/* Copyright */}
                 <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
