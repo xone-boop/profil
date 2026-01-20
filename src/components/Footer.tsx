@@ -12,7 +12,6 @@ export function Footer() {
                     <div className="md:col-span-2">
                         <div className="flex items-center gap-3 mb-4">
                             <BrandLogo size={32} className="text-primary" />
-                            <span className="font-pixel text-xl text-background">X One</span>
                         </div>
                         <p className="font-sans text-base text-background/80 leading-relaxed max-w-sm">
                             Building high-performance landing pages, SaaS, and e-commerce solutions.
