@@ -105,7 +105,7 @@ export default function HomePage() {
               {/* Mobile Overlay - Darken background for readability */}
               <div className="absolute inset-0 bg-background/90 lg:hidden z-0" />
 
-              <div className="relative z-10">
+              <div className="relative z-10 pt-10 lg:pt-0 -ml-px lg:ml-0">
                 <motion.div variants={itemVariants} className="inline-block mb-4">
                   <span className="font-retro text-sm md:text-base px-3 py-1 bg-primary/10 text-primary border border-primary/20 rounded-sm animate-soft-blink">
                     Available for freelance work
