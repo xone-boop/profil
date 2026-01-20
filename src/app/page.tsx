@@ -175,7 +175,7 @@ export default function HomePage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
             >
-              <div className="relative aspect-[4/3] lg:aspect-square max-w-lg mx-auto lg:max-w-none">
+              <div className="relative aspect-[4/3] lg:aspect-square max-w-lg mx-auto lg:max-w-none min-h-[300px] lg:min-h-[400px]">
                 <Image
                   src="/hero-illustration.png"
                   alt="Cozy pixel art workspace"
@@ -193,7 +193,7 @@ export default function HomePage() {
       {/* ============================================
           Services Section
           ============================================ */}
-      <section className="py-24 relative z-20">
+      <section className="py-12 relative z-20">
         <div className="container-custom">
           <motion.div
             className="text-center max-w-3xl mx-auto mb-16"
@@ -256,7 +256,7 @@ export default function HomePage() {
       {/* ============================================
           Why Choose & Workflow Section
           ============================================ */}
-      <section className="py-24 bg-surface/50 border-t-2 border-foreground/10">
+      <section className="py-12 bg-surface/50 border-t-2 border-foreground/10">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             {/* Left Col: Features */}
@@ -329,7 +329,7 @@ export default function HomePage() {
       {/* ============================================
           Service Guarantees (Replacing Real Results)
           ============================================ */}
-      <section className="py-24">
+      <section className="py-12">
         <div className="container-custom">
           <motion.div
             className="text-center mb-16"
